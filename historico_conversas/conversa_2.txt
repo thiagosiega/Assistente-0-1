@@ -1,0 +1,18 @@
+Nova conversa iniciada.
+
+Você: bom dia
+Assistente: Bom dia! Como posso te ajudar hoje? 
+
+
+Você: Quem e voce?
+Assistente: Eu sou um modelo de linguagem grande, treinado pelo Google. 😉 
+
+
+Você: Meu nome e thiago
+Assistente: Olá Thiago! 😄 É um prazer te conhecer.  O que posso fazer por você hoje? 😊 
+
+
+Você: qual e o meu nome?
+Assistente: Seu nome é Thiago! 😄  Lembrei-me do que você me disse antes. 😊 
+
+

@@ -1,6 +1,11 @@
 import os
 import tkinter as tk
 from tkinter import messagebox
+import win32gui
+import win32console
+
+# Ocultar o console do Windows
+win32gui.ShowWindow(win32console.GetConsoleWindow(), 0)
 
 FILE_DEPENDENCIAS = "Assistente/requirements.txt"
 FILE_API = "Assistente/api_key.txt"
@@ -62,14 +67,10 @@ def instalar_dependencias():
     if os.path.exists(File):
         return "Bibliotecas já instaladas"
     try:
-        with open(FILE_DEPENDENCIAS, "r") as file:
-            dependencias = file.readlines()
-            for dependencia in dependencias:
-                os.system(f"pip install {dependencia.strip()}")
-
-            with open(File, "w") as file:
-                file.write("Bibliotecas instaladas")
-        return "Dependências instaladas com sucesso!"
+        os.system(f"pip install -r {FILE_DEPENDENCIAS}")
+        with open(File, "w") as file:
+            file.write("Bibliotecas instaladas")
+        return "Dependências instaladas com sucesso."
     except FileNotFoundError:
         return "Arquivo de dependências não encontrado."
     except Exception as e:
@@ -77,10 +78,19 @@ def instalar_dependencias():
 
 # Função para executar o Assistente
 def executar_assistente():
-    try:
-        os.system("python Assistente/Assistente.pyw")
-    except Exception as e:
-        return f"Ocorreu um erro ao executar o Assistente: {e}"
+    respostra = messagebox.askyesno("Assistente", "Modo sem janela?")
+    if respostra:
+        try:
+            os.system("python Assistente/Assistente.pyw")
+        except Exception as e:
+            return f"Ocorreu um erro ao executar o Assistente: {e}"
+        return
+    else:
+        try:
+            os.system("python Assistente/Assistente_GUI.py")
+        except Exception as e:
+            return f"Ocorreu um erro ao executar o Assistente: {e}"
+        return
 
 # Função principal
 def main():
