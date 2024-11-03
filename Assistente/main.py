@@ -1,11 +1,16 @@
 import os
 import tkinter as tk
 from tkinter import messagebox
-import win32gui
-import win32console
 
-# Ocultar o console do Windows
-win32gui.ShowWindow(win32console.GetConsoleWindow(), 0)
+#verifica se a bibilhoteca ja foi instalada
+try:
+    import win32gui
+    import win32console
+    # Ocultar o console do Windows
+    win32gui.ShowWindow(win32console.GetConsoleWindow(), 0)
+except ImportError:
+    # Se a biblioteca não estiver instalada, instalar
+    os.system("pip install pywin32")
 
 FILE_DEPENDENCIAS = "Assistente/requirements.txt"
 FILE_API = "Assistente/api_key.txt"

@@ -1,0 +1,8 @@
+#compilaçao go
+main.go
+
+#log de erros
+assistente.log
+
+#confirmaçao de istalaçao de bibiotecas
+Assistente/Sistema.txt
